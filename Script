@@ -1,0 +1,157 @@
+UI.AddSubTab( ["Misc.", "SUBTAB_MGR"], "Ley's Scripts");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "Owned Clantag");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "Bomb Plant");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "WIP Print Events in Chat ");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "Euphoria AA ");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "Dysphoria AA ");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "Euphoric Clan Tag ");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "Dysphoric Clan Tag ");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "zeroTickDT ");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "autoRecharge ");
+UI.AddCheckbox(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts"], "Euphoric lagSync ");
+
+function playerOwnedClantag() {
+    if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","Owned Clantag"])){
+		return;
+		}
+		
+		  userid = Event.GetInt("userid");
+    userid_index = Entity.GetEntityFromUserID(userid);
+    userid_name = Entity.GetName(userid_index);
+    userid_me = Entity.IsLocalPlayer(userid_index);
+	 attacker = Event.GetInt("attacker"); 
+   attacker_index = Entity.GetEntityFromUserID(attacker);
+  attacker_name = Entity.GetName(attacker_index);
+    attacker_me = Entity.IsLocalPlayer(attacker_index);
+//Global.ExecuteCommand("say get Owned");
+
+
+if (userid_me) {
+	return;
+}
+if (attacker_me) {
+	Local.SetClanTag(userid_name + " Down!");
+	
+	
+	
+}
+}
+function bombPlanting() {
+	 if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","Bomb Plant"])){
+		return;
+	 }
+		 userid = Event.GetInt("userid");
+    userid_index = Entity.GetEntityFromUserID(userid);
+    userid_name = Entity.GetName(userid_index);
+    userid_me = Entity.IsLocalPlayer(userid_index);
+	
+	  
+	  Cheat.PrintLog(("BOMB IS BEING PLANTED " ) , [255, 251, 0,255])	
+		
+		
+}
+function antiAim() {
+if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","Euphoria AA "])){
+return;
+}
+AntiAim.SetOverride(1);
+AntiAim.SetFakeOffset(40);
+AntiAim.SetRealOffset(-12); 
+AntiAim.SetLBYOffset(133);
+
+}
+function DysphoricAA() {
+if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","Dysphoria AA "])){
+return;
+}
+ userid = Event.GetInt("userid");
+    userid_index = Entity.GetEntityFromUserID(userid);
+    userid_name = Entity.GetName(userid_index);
+    userid_me = Entity.IsLocalPlayer(userid_index);
+	 attacker = Event.GetInt("attacker");
+   attacker_index = Entity.GetEntityFromUserID(attacker);
+  attacker_name = Entity.GetName(attacker_index);
+    attacker_me = Entity.IsLocalPlayer(attacker_index);
+AntiAim.SetOverride(1);
+AntiAim.SetFakeOffset(-40);
+AntiAim.SetRealOffset(12); 
+AntiAim.SetLBYOffset(-133);
+function injureAA(){
+	 userid = Event.GetInt("userid");
+    userid_index = Entity.GetEntityFromUserID(userid);
+    userid_name = Entity.GetName(userid_index);
+    userid_me = Entity.IsLocalPlayer(userid_index);
+	 attacker = Event.GetInt("attacker");
+   attacker_index = Entity.GetEntityFromUserID(attacker);
+  attacker_name = Entity.GetName(attacker_index);
+    attacker_me = Entity.IsLocalPlayer(attacker_index);
+if (player_hurt) {
+	
+	AntiAim.SetOverride(1);
+AntiAim.SetFakeOffset(-12);
+AntiAim.SetRealOffset(60); 
+AntiAim.SetLBYOffset(153);
+} else {
+AntiAim.SetOverride(1);
+AntiAim.SetFakeOffset(-40);
+AntiAim.SetRealOffset(12); 
+AntiAim.SetLBYOffset(-133);
+} 
+
+if (health < 50) {
+AntiAim.SetOverride(1);
+AntiAim.SetFakeOffset(80);
+AntiAim.SetRealOffset(-30); 
+AntiAim.SetLBYOffset(143);
+} 
+}
+}
+
+
+function dysphoricTag(){
+	if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","Dysphoric Clan Tag "])){
+return;
+}
+Local.SetClanTag("dysphoric");
+
+}
+
+function zeroTickDT(){
+	if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","zeroTickDT "])){
+		return;
+	}
+	Exploit.OverrideTolerance(0);
+	Exploit.OverrideShift(64)
+}
+function autoRecharge() {
+	if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","autoRecharge "])){
+		return;
+	}
+	Exploit.EnableRecharge();
+}
+function lagSync(){
+	if (!UI.GetValue(["Misc.", "Ley's Scripts", "SHEET_MGR", "Ley's Scripts","Euphoric lagSync "])){
+		return;
+	}
+	    // Lagsync Logic
+function getRandomIntInclusive(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (min * max - 0.0003)) + min;
+  }
+	AntiAim.SetOverride(1);
+	
+    AntiAim.SetRealOffset(getRandomIntInclusive( 70, -90));
+    AntiAim.SetFakeOffset(getRandomIntInclusive( -78, 78));
+}
+
+
+Global.RegisterCallback("player_death", "playerOwnedClantag");
+Global.RegisterCallback("bomb_beginplant", "bombPlanting");
+Cheat.RegisterCallback("CreateMove", "antiAim");
+Cheat.RegisterCallback("CreateMove", "DysphoricAA");
+Cheat.RegisterCallback("CreateMove", "dysphoricTag");
+Cheat.RegisterCallback("CreateMove", "zeroTickDT ");
+Cheat.RegisterCallback("CreateMove", "autoRecharge ");
+Cheat.RegisterCallback("CreateMove", "lagSync");
+//Cheat.RegisterCallback("CreateMove", "HC");
